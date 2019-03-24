@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <windows.h>
+#include "lista.h"
 
 // Função para posicionamento de cursor (col, lin);
 void gotoxy(float x, float y){
@@ -12,6 +13,7 @@ void gotoxy(float x, float y){
     SetConsoleCursorPosition (GetStdHandle(STD_OUTPUT_HANDLE), c);
 
 }
+
 
 // Função que desenha moldura na tela
 void tela(){
@@ -42,9 +44,12 @@ void tela(){
 
     int opcao = 0;
 
-    while(opcao != 7){
+    PTR_LISTA lista = criar_lista();
+
+    while(opcao != 9){
 
         //Cria a Moldura
+        system("cls");
         tela();
 
         //Titulo da Janela
@@ -55,26 +60,29 @@ void tela(){
         gotoxy(45,12);printf("1 - Cadastro de Alunos");
         gotoxy(45,13);printf("2 - Excluir Aluno Específico");
         gotoxy(45,14);printf("3 - Excluir Todos os Alunos");
-        gotoxy(45,15);printf("4 - Exibir Alunos");
+        gotoxy(45,15);printf("4 - Buscar Aluno");
         gotoxy(45,16);printf("5 - Exibir Alunos de Forma Ordenada");
         gotoxy(45,17);printf("6 - Relatório");
-        gotoxy(45,18);printf("7 - Sair");
+        gotoxy(45,18);printf("7 - Salvar em um Arquivo");
+        gotoxy(45,19);printf("8 - Carregar de um Arquivo");
+        gotoxy(45,20);printf("9 - Sair");
 
-        gotoxy(45,20);printf("Escolha a opção desejada: ");
-        gotoxy(71,20);scanf("%d",&opcao);
+        gotoxy(45,22);printf("Escolha a opção desejada: ");
+        gotoxy(71,22);scanf("%d",&opcao);
         fflush(stdin);
         system("cls");
 
         switch(opcao){
-            /*case 1: cadastro();break;
-            case 2: excluir_especifico();break;
-            case 3: escluir_todos();break;
-            case 4: exibir_alunos();break;
-            case 5: exibir_ordenado();break;
-            case 6: relatorio();break;*/
-            case 7: ;break;
+            case 1: inserir_aluno(lista);break;
+            /*case 2: excluir_especifico();break;
+            case 3: escluir_todos();break;*/
+            case 4: buscar_aluno(lista);break;
+            /*case 5: exibir_alunos(lista);break;
+            case 6: relatorio();break;
+            case 7: salvar();break;
+            case 8: carregar();break;*/
+            case 9: ;break;
 
-            default: printf("Opção Inválida");break;
         }
     }
     system("pause");
