@@ -86,7 +86,7 @@ void remover_inicio(PTR_LISTA lista){
     }
 }
 
-void salvar_contatos(PTR_LISTA lista) {
+void salvar(PTR_LISTA lista) {
    FILE * arq;
 
     // abrir arquivo contatos.txt no modo escrita "w" -> write
@@ -94,7 +94,8 @@ void salvar_contatos(PTR_LISTA lista) {
 
     //testando se o arquivo foi realmente criado
     if(arq == NULL){
-      gotoxy(45,25);printf("Erro na abertura do arquivo!");
+       return 0;
+      //gotoxy(45,25);printf("Erro na abertura do arquivo!");
     }
 
     //APENAS TESTE, VERSAO FINAL DEPENDE DA STRUC DE ALUNO
@@ -104,7 +105,32 @@ void salvar_contatos(PTR_LISTA lista) {
     //usando fclose para fechar o arquivo
     fclose(arq);
 
-    gotoxy(45,25);printf("Contatos gravados com sucesso!");
+    return 1;
+    //gotoxy(45,25);printf("Alunos salvos com sucesso!");
+}
+
+void carregar(PTR_LISTA lista) {
+   FILE * arq;
+    // abrir arquivo contatos.txt no modo leitura "r" -> read
+    arq = fopen("alunos.txt", "r");
+
+    //testando se o arquivo foi realmente criado
+    if(arq == NULL){
+        return 0;
+      //gotoxy(45,25);printf("Erro na abertura do arquivo!");
+    }
+
+    //enquanto não for fim de arquivo o looping será executado
+    //e será impresso o texto
+
+    // v0 PRECISA DA STRUCT PARA LER OS CAMPOS
+    // while(fgets({DEFINIR}, {INT ?], arq) != NULL)
+
+    //usando fclose para fechar o arquivo
+    fclose(arq);
+
+    return 1;
+    //gotoxy(45,25);printf("Alunos carregados com sucesso!");
 }
 
 
