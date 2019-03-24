@@ -90,11 +90,11 @@ void salvar_contatos(PTR_LISTA lista) {
    FILE * arq;
 
     // abrir arquivo contatos.txt no modo escrita "w" -> write
-    arq = fopen("contatos.txt", "w");
+    arq = fopen("alunos.txt", "w");
 
     //testando se o arquivo foi realmente criado
     if(arq == NULL){
-      printf("Erro na abertura do arquivo!");
+      gotoxy(45,25);printf("Erro na abertura do arquivo!");
     }
 
     //APENAS TESTE, VERSAO FINAL DEPENDE DA STRUC DE ALUNO
@@ -104,7 +104,7 @@ void salvar_contatos(PTR_LISTA lista) {
     //usando fclose para fechar o arquivo
     fclose(arq);
 
-    printf("Contatos gravados com sucesso!");
+    gotoxy(45,25);printf("Contatos gravados com sucesso!");
 }
 
 
