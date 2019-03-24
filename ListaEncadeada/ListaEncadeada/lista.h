@@ -24,5 +24,6 @@ void inserir_posicao(PTR_LISTA lista, int posicao, int numero);
 void remover_final(PTR_LISTA lista);
 void remover_inicio(PTR_LISTA lista);
 void remover_posicao(PTR_LISTA lista, int posicao);
+void salvar_contatos(PTR_LISTA lista);
 
 #endif

@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "lista.h"
 
 PTR_LISTA criar_lista(){
@@ -85,6 +86,26 @@ void remover_inicio(PTR_LISTA lista){
     }
 }
 
+void salvar_contatos(PTR_LISTA lista) {
+   FILE * arq;
+
+    // abrir arquivo contatos.txt no modo escrita "w" -> write
+    arq = fopen("contatos.txt", "w");
+
+    //testando se o arquivo foi realmente criado
+    if(arq == NULL){
+      printf("Erro na abertura do arquivo!");
+    }
+
+    //APENAS TESTE, VERSAO FINAL DEPENDE DA STRUC DE ALUNO
+    //usando fprintf para armazenar no arquivo
+    fprintf(arq, "%s", "aaaaa");
+
+    //usando fclose para fechar o arquivo
+    fclose(arq);
+
+    printf("Contatos gravados com sucesso!");
+}
 
 
 
