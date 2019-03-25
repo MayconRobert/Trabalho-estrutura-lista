@@ -79,7 +79,7 @@ void tela(){
 
             case 1: inserir_aluno(lista);break;
             case 2: remover_especifico(lista);break;
-            //case 3: escluir_todos();break;
+            //case 3: excluir_todos();break;
             case 4: buscar_aluno(lista);break;
             /*case 5: exibir_alunos(lista);break;
             case 6: relatorio();break;
