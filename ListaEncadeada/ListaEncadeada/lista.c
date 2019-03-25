@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "lista.h"
 
 PTR_LISTA criar_lista(){
@@ -85,6 +86,52 @@ void remover_inicio(PTR_LISTA lista){
     }
 }
 
+void salvar(PTR_LISTA lista) {
+   FILE * arq;
+
+    // abrir arquivo contatos.txt no modo escrita "w" -> write
+    arq = fopen("alunos.txt", "w");
+
+    //testando se o arquivo foi realmente criado
+    if(arq == NULL){
+       return 0;
+      //gotoxy(45,25);printf("Erro na abertura do arquivo!");
+    }
+
+    //APENAS TESTE, VERSAO FINAL DEPENDE DA STRUC DE ALUNO
+    //usando fprintf para armazenar no arquivo
+    fprintf(arq, "%s", "aaaaa");
+
+    //usando fclose para fechar o arquivo
+    fclose(arq);
+
+    return 1;
+    //gotoxy(45,25);printf("Alunos salvos com sucesso!");
+}
+
+void carregar(PTR_LISTA lista) {
+   FILE * arq;
+    // abrir arquivo contatos.txt no modo leitura "r" -> read
+    arq = fopen("alunos.txt", "r");
+
+    //testando se o arquivo foi realmente criado
+    if(arq == NULL){
+        return 0;
+      //gotoxy(45,25);printf("Erro na abertura do arquivo!");
+    }
+
+    //enquanto não for fim de arquivo o looping será executado
+    //e será impresso o texto
+
+    // v0 PRECISA DA STRUCT PARA LER OS CAMPOS
+    // while(fgets({DEFINIR}, {INT ?], arq) != NULL)
+
+    //usando fclose para fechar o arquivo
+    fclose(arq);
+
+    return 1;
+    //gotoxy(45,25);printf("Alunos carregados com sucesso!");
+}
 
 
 

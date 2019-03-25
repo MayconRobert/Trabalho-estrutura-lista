@@ -19,6 +19,7 @@ int main()
     remover_final(lista);
 
     exibir_lista(lista);
+    salvar_contatos(lista);
 
     return 0;
 }
