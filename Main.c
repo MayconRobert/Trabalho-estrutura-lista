@@ -44,7 +44,9 @@ void tela(){
 
     int opcao = 0;
 
-
+    /*PTR_LISTA lista;
+    if(lista)
+        PTR_LISTA lista = criar_lista();*/
     PTR_LISTA lista = criar_lista();
 
     while(opcao != 9){
