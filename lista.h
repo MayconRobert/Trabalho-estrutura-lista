@@ -22,6 +22,7 @@ PTR_LISTA criar_lista();
 void inserir_aluno(PTR_LISTA lista);
 void buscar_aluno(PTR_LISTA lista);
 void remover_especifico(PTR_LISTA lista);
+void excluir_todos(PRT_LIST lista);
 
 
 #endif

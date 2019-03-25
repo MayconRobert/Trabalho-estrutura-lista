@@ -116,3 +116,17 @@ void remover_especifico(PTR_LISTA lista){
     printf("Aluno Não Encontrado");
     getche();
 }
+
+void excluir_todos(PRT_LIST lista){
+    if (lista == NULL){
+        return;
+    }
+    while (lista->tamanho > 0) {
+        PTR_CELULA lixo = lista->inicio;
+        lista->inicio = lista->inicio->proxima;
+        free(lixo);
+        lista->tamanho--;
+        
+    }
+    
+}
