@@ -58,7 +58,7 @@ void buscar_aluno(PTR_LISTA lista){
         return;
     }
 
-    printf("Insira o nome do Aluno: ");
+    printf("Insira o nome do Aluno que deseja buscar: ");
     gets(nome);
 
     PTR_CELULA celula = lista->inicio;
@@ -77,5 +77,42 @@ void buscar_aluno(PTR_LISTA lista){
         celula = celula->proxima;
     }
     printf("Aluno não Encontrado");
+    getche();
+}
+
+void remover_especifico(PTR_LISTA lista){
+
+    char nome[30];
+    int primeira_rodada = 0;
+
+    if (lista->tamanho == 0){
+        printf("Lista Vazia");
+        getche();
+        return;
+    }
+
+    printf("Insira o nome do aluno que deseja remover: ");
+    gets(nome);
+
+    PTR_CELULA celula_lixo = lista->inicio;
+    PTR_CELULA celula_anterior = lista->inicio;
+
+    while (celula_lixo != NULL){
+        if(strcmp(celula_lixo->nome,nome) == 0){
+            celula_anterior->proxima = celula_lixo->proxima;
+            free(celula_lixo);
+            lista->tamanho--;
+            printf("Aluno removido com sucesso");
+
+            getche();
+
+            return;
+            }
+        celula_lixo = celula_lixo->proxima;
+        if(primeira_rodada)
+            celula_anterior = celula_anterior->proxima;
+        primeira_rodada = 1;
+    }
+    printf("Aluno Não Encontrado");
     getche();
 }

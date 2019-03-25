@@ -58,8 +58,8 @@ void tela(){
         //Menu Principal
         gotoxy(55,10);printf("MENU");
         gotoxy(45,12);printf("1 - Cadastro de Alunos");
-        gotoxy(45,13);printf("2 - Excluir Aluno Específico");
-        gotoxy(45,14);printf("3 - Excluir Todos os Alunos");
+        gotoxy(45,13);printf("2 - Remover Aluno Específico");
+        gotoxy(45,14);printf("3 - Remover Todos os Alunos");
         gotoxy(45,15);printf("4 - Buscar Aluno");
         gotoxy(45,16);printf("5 - Exibir Alunos de Forma Ordenada");
         gotoxy(45,17);printf("6 - Relatório");
@@ -74,8 +74,8 @@ void tela(){
 
         switch(opcao){
             case 1: inserir_aluno(lista);break;
-            /*case 2: excluir_especifico();break;
-            case 3: escluir_todos();break;*/
+            case 2: remover_especifico(lista);break;
+            //case 3: escluir_todos();break;
             case 4: buscar_aluno(lista);break;
             /*case 5: exibir_alunos(lista);break;
             case 6: relatorio();break;
