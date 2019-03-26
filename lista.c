@@ -15,7 +15,7 @@ void inserir_aluno(PTR_LISTA lista){
     char nome[30];
     float massa,altura;
 
-    // Criar uma celula e adicionar o conteúdo
+    // Criar uma celula e adicionar o conteÃºdo
     PTR_CELULA celula = (PTR_CELULA)malloc(sizeof(PTR_CELULA));
     printf("Insira o nome do Aluno: ");
     gets(nome);
@@ -76,7 +76,7 @@ void buscar_aluno(PTR_LISTA lista){
             }
         celula = celula->proxima;
     }
-    printf("Aluno não Encontrado");
+    printf("Aluno nÃ£o Encontrado");
     getche();
 }
 
@@ -113,11 +113,11 @@ void remover_especifico(PTR_LISTA lista){
             celula_anterior = celula_anterior->proxima;
         primeira_rodada = 1;
     }
-    printf("Aluno Não Encontrado");
+    printf("Aluno NÃ£o Encontrado");
     getche();
 }
 
-void excluir_todos(PRT_LIST lista){
+void excluir_todos(PTR_LISTA lista){
     if (lista == NULL){
         return;
     }
