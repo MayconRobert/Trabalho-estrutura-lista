@@ -33,7 +33,6 @@ void inserir_aluno(PTR_LISTA lista){
 
     celula->proxima = NULL;
 
-
     // Inserir a celula na lista vazia
     if (lista->tamanho == 0){
         lista->inicio = celula;
@@ -126,7 +125,70 @@ void excluir_todos(PTR_LISTA lista){
         lista->inicio = lista->inicio->proxima;
         free(lixo);
         lista->tamanho--;
-        
+
     }
-    
+}
+
+int salvar(PTR_LISTA lista) {
+   FILE * arq;
+
+   if (lista == NULL){
+        return 0;
+    }
+    // abrir arquivo contatos.txt no modo escrita "w" -> write
+    arq = fopen("alunos.txt", "w");
+
+    //testando se o arquivo foi realmente criado
+    if(arq == NULL){
+       return 0;
+    }
+
+    PTR_CELULA aluno = lista->inicio;
+    while(aluno != NULL) {
+        //usando fprintf para armazenar no arquivo
+        fprintf(arq, "%s|%f|%f|%f|\n", aluno->nome, aluno->massa, aluno->altura, aluno->imc);
+
+        aluno = aluno->proxima;
+    }
+
+    //usando fclose para fechar o arquivo
+    fclose(arq);
+
+    return 1;
+}
+
+int carregar(PTR_LISTA lista) {
+   FILE * arq;
+   char linha[100];
+   char *result;
+   int i;
+
+    if(lista == NULL){
+        return 0;
+    }
+
+    // abrir arquivo contatos.txt no modo leitura "r" -> read
+    arq = fopen("alunos.txt", "rt");
+
+    //testando se o arquivo foi realmente criado
+    if(arq == NULL){
+        return 0;
+    }
+
+    PTR_CELULA aluno = lista->inicio;
+    while (!feof(arq))
+    {
+        // Lê uma linha (inclusive com o '\n')
+        result = fgets(linha, 100, arq);  // o 'fgets' lê até 99 caracteres ou até o '\n'
+        if (result)  // Se foi possível ler
+        i++;
+        //vai ler linha por linha, usar isto para criar a celula e colocar em uma lista
+        //aluno->nome, aluno->massa, aluno->altura, aluno->imc
+    }
+
+    //usando fclose para fechar o arquivo
+    fclose(arq);
+
+    return 1;
+    //gotoxy(45,25);printf("Alunos carregados com sucesso!");
 }

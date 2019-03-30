@@ -14,7 +14,6 @@ void gotoxy(float x, float y){
 
 }
 
-
 // Função que desenha moldura na tela
 void tela(){
 
@@ -32,9 +31,7 @@ void tela(){
           gotoxy(1,l); printf("|");
           gotoxy(120,l); printf("|");
      }
-
  }
-
 
  void main(){
 
@@ -82,12 +79,27 @@ void tela(){
             case 3: excluir_todos(lista);break;
             case 4: buscar_aluno(lista);break;
             /*case 5: exibir_alunos(lista);break;
-            case 6: relatorio();break;
-            case 7: salvar();break;
-            case 8: carregar();break;*/
+            case 6: relatorio();break;*/
+            case 7: salvar_alunos(lista);break;
+            case 8: carregar_alunos(lista);break;
             case 9: ;break;
-
         }
     }
     system("pause");
  }
+
+void salvar_alunos(PTR_LISTA lista) {
+    if(salvar(lista) == 0) {
+        gotoxy(45,25);printf("Erro na abertura do arquivo!");
+    } else {
+        gotoxy(45,25);printf("Alunos salvos com sucesso!");
+    }
+}
+
+void carregar_alunos(PTR_LISTA lista) {
+    if(carregar(lista) == 0) {
+        gotoxy(45,25);printf("Erro na abertura do arquivo!");
+    } else {
+        gotoxy(45,25);printf("Alunos recuperados com sucesso!");
+    }
+}

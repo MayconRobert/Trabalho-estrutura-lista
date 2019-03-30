@@ -23,6 +23,7 @@ void inserir_aluno(PTR_LISTA lista);
 void buscar_aluno(PTR_LISTA lista);
 void remover_especifico(PTR_LISTA lista);
 void excluir_todos(PTR_LISTA lista);
-
+int salvar(PTR_LISTA lista);
+int carregar(PTR_LISTA lista);
 
 #endif
