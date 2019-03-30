@@ -146,7 +146,7 @@ int salvar(PTR_LISTA lista) {
     PTR_CELULA aluno = lista->inicio;
     while(aluno != NULL) {
         //usando fprintf para armazenar no arquivo
-        fprintf(arq, "%s|%f|%f|%f|\n", aluno->nome, aluno->massa, aluno->altura, aluno->imc);
+        fprintf(arq, "Nome: %s, peso: %f, altura: %f, imc: %f\n", aluno->nome, aluno->massa, aluno->altura, aluno->imc);
 
         aluno = aluno->proxima;
     }
@@ -157,38 +157,29 @@ int salvar(PTR_LISTA lista) {
     return 1;
 }
 
+int salvar_binario(PTR_LISTA lista) {
+ size_t nbytes = 0L;
+    FILE * fp = fopen( "alunos.dat", "wb" );
+
+    if(!fp)
+        return 0;
+
+    nbytes = fwrite(lista, sizeof(PTR_LISTA), 1, fp );
+
+    fclose(fp);
+    return 1;
+}
+
 int carregar(PTR_LISTA lista) {
-   FILE * arq;
-   char linha[100];
-   char *result;
-   int i;
+    size_t nbytes = 0L;
+    FILE * fp = fopen( "alunos.dat", "rb" );
 
-    if(lista == NULL){
+    if(!fp)
         return 0;
-    }
 
-    // abrir arquivo contatos.txt no modo leitura "r" -> read
-    arq = fopen("alunos.txt", "rt");
-
-    //testando se o arquivo foi realmente criado
-    if(arq == NULL){
-        return 0;
-    }
-
-    PTR_CELULA aluno = lista->inicio;
-    while (!feof(arq))
-    {
-        // Lê uma linha (inclusive com o '\n')
-        result = fgets(linha, 100, arq);  // o 'fgets' lê até 99 caracteres ou até o '\n'
-        if (result)  // Se foi possível ler
-        i++;
-        //vai ler linha por linha, usar isto para criar a celula e colocar em uma lista
-        //aluno->nome, aluno->massa, aluno->altura, aluno->imc
-    }
+    nbytes = fread(lista, sizeof(PTR_LISTA), 1, fp );
 
     //usando fclose para fechar o arquivo
-    fclose(arq);
-
+    fclose(fp);
     return 1;
-    //gotoxy(45,25);printf("Alunos carregados com sucesso!");
 }

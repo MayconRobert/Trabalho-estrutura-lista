@@ -24,6 +24,7 @@ void buscar_aluno(PTR_LISTA lista);
 void remover_especifico(PTR_LISTA lista);
 void excluir_todos(PTR_LISTA lista);
 int salvar(PTR_LISTA lista);
+int salvar_binario(PTR_LISTA lista);
 int carregar(PTR_LISTA lista);
 
 #endif

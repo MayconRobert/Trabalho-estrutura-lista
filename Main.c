@@ -39,7 +39,7 @@ void tela(){
     system("color 1F");
     system("MODE 120, 30");    //Define tamanho do CMD
 
-    int opcao = 0;
+    int opcao = 10;
 
     /*PTR_LISTA lista;
     if(lista)
@@ -63,17 +63,19 @@ void tela(){
         gotoxy(45,15);printf("4 - Buscar Aluno");
         gotoxy(45,16);printf("5 - Exibir Alunos de Forma Ordenada");
         gotoxy(45,17);printf("6 - Relatório");
-        gotoxy(45,18);printf("7 - Salvar em um Arquivo");
-        gotoxy(45,19);printf("8 - Carregar de um Arquivo");
-        gotoxy(45,20);printf("9 - Sair");
+        gotoxy(45,18);printf("7 - Salvar em um Arquivo texto");
+        gotoxy(45,19);printf("8 - Salvar em um Arquivo Binário");
+        gotoxy(45,20);printf("9 - Carregar de um Arquivo Binário");
+        gotoxy(45,21);printf("0 - Sair");
 
-        gotoxy(45,22);printf("Escolha a opção desejada: ");
-        gotoxy(71,22);scanf("%d",&opcao);
+        gotoxy(45,23);printf("Escolha a opção desejada: ");
+        gotoxy(71,23);scanf("%d",&opcao);
         fflush(stdin);
         system("cls");
 
         switch(opcao){
 
+            case 0: ;break;
             case 1: inserir_aluno(lista);break;
             case 2: remover_especifico(lista);break;
             case 3: excluir_todos(lista);break;
@@ -81,8 +83,8 @@ void tela(){
             /*case 5: exibir_alunos(lista);break;
             case 6: relatorio();break;*/
             case 7: salvar_alunos(lista);break;
-            case 8: carregar_alunos(lista);break;
-            case 9: ;break;
+            case 8: salvar_binario(lista);break;
+            case 9: carregar_alunos(lista);break;
         }
     }
     system("pause");
