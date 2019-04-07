@@ -18,10 +18,17 @@ typedef struct _lista {
 
 typedef LISTA *PTR_LISTA;
 
+void gotoxy(float x, float y);
+void tela();
 PTR_LISTA criar_lista();
 void inserir_aluno(PTR_LISTA lista);
 void buscar_aluno(PTR_LISTA lista);
 void remover_especifico(PTR_LISTA lista);
-
+void excluir_todos(PTR_LISTA lista);
+float retorna_media_imc(PTR_LISTA lista);
+void retorna_desvio_padrao(PTR_LISTA lista);
+int salvar(PTR_LISTA lista);
+int salvar_binario(PTR_LISTA lista);
+int carregar(PTR_LISTA lista);
 
 #endif
