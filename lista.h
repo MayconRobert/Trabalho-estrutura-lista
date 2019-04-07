@@ -26,5 +26,7 @@ void excluir_todos(PTR_LISTA lista);
 int salvar(PTR_LISTA lista);
 int salvar_binario(PTR_LISTA lista);
 int carregar(PTR_LISTA lista);
+float retorna_media_imc(PTR_LISTA lista);
+void retorna_desvio_padrao(PTR_LISTA lista);
 
 #endif
