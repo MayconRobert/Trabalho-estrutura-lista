@@ -181,15 +181,22 @@ void excluir_todos(PTR_LISTA lista){
 }
 
 float retorna_media_imc(PTR_LISTA lista){
+
     PTR_CELULA media_imc=(PTR_CELULA)malloc(sizeof(PTR_CELULA));
 
+    tela();
+    gotoxy(55,3);printf("RELATORIO IMC");
+
+
     if(lista->tamanho == 0){
-        printf("Não tem aluno adicionado!\n");
+        gotoxy(50, 14);printf("Nao tem aluno adicionado!\n");
+        return;
     }
 
      PTR_CELULA temp = lista->inicio;
     if(lista->tamanho == 1 && temp ->proxima == NULL){
-        printf("%.2f", temp->imc);
+        gotoxy(50, 13);printf("Media do IMC: %.2f", temp->imc);
+        return;
     }
 
     int contador=0;
@@ -204,9 +211,7 @@ float retorna_media_imc(PTR_LISTA lista){
     }
 
     media = soma_dos_imc/contador;
-    printf("%.2f\n", media);
-
-    system("pause");
+    gotoxy(50, 14);printf("Media do IMC: %.2f\n", media);
 
     return media;
 }
@@ -215,12 +220,17 @@ void retorna_desvio_padrao(PTR_LISTA lista){
     PTR_CELULA d_padrao =(PTR_CELULA)malloc(sizeof(PTR_CELULA));
 
     if(lista->tamanho == 0){
-        printf("Não tem aluno adicionado!\n");
+        getche();
+        return;
     }
 
-     PTR_CELULA temp = lista->inicio;
-    if(lista->tamanho == 1 && temp ->proxima == NULL){
-        printf("%.2f", temp->imc);
+
+    PTR_CELULA temp = lista->inicio;
+
+    if(lista->tamanho == 1){
+        gotoxy(50, 16);printf("Desvio Padrao: %.2f", temp->imc);
+        getche();
+        return;
     }
 
     int contador=0;
@@ -245,10 +255,9 @@ void retorna_desvio_padrao(PTR_LISTA lista){
 
     desvio = sqrt(resultado_final_variancia);
 
-    printf("%.2f\n\n",  desvio);
+    gotoxy(50, 16);printf("Desvio Padrao: %.2f\n\n",  desvio);
 
-    system("pause");
-
+    getche();
 }
 
 int salvar(PTR_LISTA lista) {
@@ -336,7 +345,132 @@ int carregar(PTR_LISTA lista) {
     return 1;
 }
 
+void ordena(PTR_LISTA lista){
+    PTR_CELULA temp = (PTR_CELULA)malloc(sizeof(PTR_CELULA));
+    PTR_CELULA temp2 ;
+    temp = lista->inicio;
+
+    while(temp != NULL){
+
+       if(strcmp(temp->nome,temp->proxima->nome) > 0){
+        {
+        temp2 = temp;
+        temp = temp->proxima;
+        temp->proxima = temp2;
+        }
+        free(temp2);
+        temp = temp->proxima;
+    }
+
+    system("pause");
+    }
+}
+
+void retorna_maior_altura(PTR_LISTA lista){
+
+    tela();
+    gotoxy(55,3);printf("RELATORIO BASICO");
+
+    PTR_CELULA maior_altura = (PTR_CELULA)malloc(sizeof(PTR_CELULA));
+     if (lista->tamanho == 0){
+         gotoxy(45, 11);printf("Nao tem aluno adicionado!");
+         getche();
+         home();
+     }
+     else if (lista->tamanho == 1 && maior_altura->proxima == NULL){
+         maior_altura = lista->inicio;
+         gotoxy(50, 11);printf("Maior altura: %.2f", maior_altura->altura);
+     }
+    else{
+    maior_altura = lista->inicio;
+    PTR_CELULA temp = maior_altura->proxima;
+    while (temp != NULL)
+    {
+
+        if(maior_altura->altura < temp->altura)
+        {
+            maior_altura = temp;
+        }
+     temp = temp->proxima;
+
+    }
+    gotoxy(50, 11);printf("Maior altura: %.2f", maior_altura->altura);
+    }
+
+}
+
+void retorna_menor_altura(PTR_LISTA lista){
+
+    PTR_CELULA menor_altura = (PTR_CELULA)malloc(sizeof(PTR_CELULA));
+    if (lista->tamanho == 1 && menor_altura->proxima == NULL){
+         menor_altura = lista->inicio;
+         gotoxy(50, 13);printf("Menor altura: %.2f", menor_altura->altura);
+    }
+    else{
+    menor_altura = lista->inicio;
+    PTR_CELULA temp = menor_altura->proxima;
+    while (temp != NULL)
+    {
+
+        if(menor_altura->altura > temp->altura)
+        {
+            menor_altura = temp;
+        }
+     temp = temp->proxima;
+
+    }
+    gotoxy(50, 13);printf("Menor altura: %.2f", menor_altura->altura);
+    }
+
+}
+
+void retorna_maior_massa(PTR_LISTA lista){
 
 
+    PTR_CELULA maior_massa = (PTR_CELULA)malloc(sizeof(PTR_CELULA));
+    if (lista->tamanho == 1 && maior_massa->proxima == NULL){
+         maior_massa = lista->inicio;
+         gotoxy(50, 15);printf("Maior massa: %.2f", maior_massa->massa); // RETORNA 1 ALUNO
+    }
+    else{
+    maior_massa = lista->inicio;
+    PTR_CELULA temp = maior_massa->proxima;
+    while (temp != NULL)
+    {
 
+        if(maior_massa->massa < temp->massa)
+        {
+            maior_massa = temp;
+        }
+     temp = temp->proxima;
 
+    }
+
+    gotoxy(50, 15);printf("Maior massa: %.2f", maior_massa->massa);
+    }
+
+}
+
+void retorna_menor_massa(PTR_LISTA lista){
+    PTR_CELULA menor_massa = (PTR_CELULA)malloc(sizeof(PTR_CELULA));
+    if (lista->tamanho == 1 && menor_massa->proxima == NULL){
+         menor_massa = lista->inicio;
+         gotoxy(50, 17);printf("Menor massa: %.2f", menor_massa->massa); // RETORNA 1 ALUNO
+    }
+     else{
+    menor_massa = lista->inicio;
+    PTR_CELULA temp = menor_massa->proxima;
+    while (temp != NULL)
+    {
+
+        if(menor_massa->massa > temp->massa)
+        {
+            menor_massa = temp;
+        }
+     temp = temp->proxima;
+
+    }
+    gotoxy(50, 17);printf("Menor massa: %.2f", menor_massa->massa);
+    }
+
+}

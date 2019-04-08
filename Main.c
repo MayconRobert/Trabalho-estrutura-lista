@@ -12,17 +12,14 @@ void main(){
 void home(){
 
     setlocale(LC_ALL,"Portuguese");
-    system("color 1F");
+    system("color 4F");
     system("MODE 120, 30");    //Define tamanho do CMD
 
     int opcao = 10;
 
-    /*PTR_LISTA lista;
-    if(lista)
-        PTR_LISTA lista = criar_lista();*/
     PTR_LISTA lista = criar_lista();
 
-    while(opcao != 9){
+    while(opcao != 8){
 
         //Cria a Moldura
         system("cls");
@@ -37,11 +34,10 @@ void home(){
         gotoxy(45,13);printf("2 - Remover Aluno Especifico");
         gotoxy(45,14);printf("3 - Remover Todos os Alunos");
         gotoxy(45,15);printf("4 - Buscar Aluno");
-        gotoxy(45,16);printf("5 - Exibir Alunos de Forma Ordenada");
-        gotoxy(45,17);printf("6 - Relatorio");
+        gotoxy(45,16);printf("5 - Exibe a Media do IMC e o Desvio Padrão");
+        gotoxy(45,17);printf("6 - Exibe Maior e menor altura Exibe Maior e menor Massa");
         gotoxy(45,18);printf("7 - Salvar em um Arquivo");
-        gotoxy(45,19);printf("8 - Carregar de um Arquivo");
-        gotoxy(45,20);printf("9 - Sair");
+        gotoxy(45,19);printf("8 - Sair");
 
         gotoxy(45,23);printf("Escolha a opcao desejada: ");
         gotoxy(71,23);scanf("%d",&opcao);
@@ -54,11 +50,14 @@ void home(){
             case 2: remover_especifico(lista);break;
             case 3: excluir_todos(lista);break;
             case 4: buscar_aluno(lista);break;
-            /*case 5: exibir_alunos(lista);break;
-            case 6: relatorio();break;*/
+            case 5: retorna_media_imc(lista); retorna_desvio_padrao(lista);break;
+            case 6: retorna_maior_altura(lista);
+                    retorna_menor_altura(lista);
+                    retorna_maior_massa(lista);
+                    retorna_menor_massa(lista);
+                    getche();break;
             case 7: salvar_alunos(lista);break;
-            case 8: carregar_alunos(lista);break;
-            case 9: exit(EXIT_SUCCESS);break;
+            case 8: exit(EXIT_SUCCESS);break;
 
         }
     }
